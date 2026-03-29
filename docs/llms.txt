@@ -1,21 +1,51 @@
 # SalaryFYI Embed Widget
 
-> Embeddable SalaryFYI widgets for any website. Zero dependencies, Shadow DOM isolation, 4 themes (light/dark/sepia/auto).
+> Salary comparison, 36 countries. Embeddable widgets for any website. Zero dependencies, Shadow DOM isolation.
 
 ## Quick Start
 
-Add to any HTML page:
-- Script: <script src="https://cdn.jsdelivr.net/npm/salaryfyi-embed@1/dist/embed.min.js"></script>
+```html
+<script src="https://cdn.jsdelivr.net/npm/salaryfyi-embed@1/dist/embed.min.js"></script>
+<div data-salaryfyi="salary-compare" data-slug="example"></div>
+```
+
+## Available Widget Types (7)
+
+- entity: `data-salaryfyi="entity"`
+- glossary: `data-salaryfyi="glossary"`
+- guide: `data-salaryfyi="guide"`
+- compare: `data-salaryfyi="compare"`
+- search: `data-salaryfyi="search"`
+- faq: `data-salaryfyi="faq"`
+- salary-compare (interactive): `data-salaryfyi="salary-compare"`
+
+## Customization
+
+- **Themes**: light, dark, sepia, auto (follows system preference)
+- **Sizes**: compact (280px), default (420px), large (720px)
+- **Styles**: modern, classic
+
+```html
+<div data-salaryfyi="salary-compare" data-slug="example"
+     data-theme="auto" data-size="compact" data-style-variant="modern"></div>
+```
+
+## Integration Methods
+
+1. **Script tag** (recommended): `<script src="https://cdn.jsdelivr.net/npm/salaryfyi-embed@1/dist/embed.min.js"></script>`
+2. **iframe**: `https://salaryfyi.com/iframe/entity/{slug}/`
+3. **oEmbed**: `https://salaryfyi.com/oembed?url={page_url}&format=json`
+4. **Badge**: `https://salaryfyi.com/badge/site.svg`
 
 ## Links
 
 - Main site: https://salaryfyi.com
 - Widget docs: https://widget.salaryfyi.com
-- npm: https://www.npmjs.com/package/salaryfyi-embed
+- API documentation: https://salaryfyi.com/developers/
+- npm package: https://www.npmjs.com/package/salaryfyi-embed
 - GitHub: https://github.com/fyipedia/salaryfyi-embed
-- API: https://salaryfyi.com/developers/
 
-## Guide FYI Widget Family
+## Guide FYI Widget Network
 
 - [CalcFYI Widget](https://widget.calcfyi.com)
 - [UnivFYI Widget](https://widget.univfyi.com)
