@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# SalaryFYI Embed Widget
+# Main site: https://salaryfyi.com
+# Widget docs: https://widget.salaryfyi.com
+# npm: https://www.npmjs.com/package/salaryfyi-embed
