@@ -433,22 +433,22 @@ function M(){return`
 .guidefyi-mono { font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Consolas', monospace; font-size: 13px; }
 
 ${te(a)}
-  `}function z(e,a){let r=e.dataset.styleVariant||"modern",i=e.attachShadow({mode:"open"}),t=document.createElement("style");return t.textContent=H(a.accent,r),i.appendChild(t),i}function ne(e){let a=e.dataset.theme||"light";return a==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":a}function D(e,a,r){let i=ne(a),t=a.dataset.size||"default",s=document.createElement("div");return s.className=["guidefyi-widget",r].filter(Boolean).join(" "),s.setAttribute("data-theme",i),s.setAttribute("data-size",t),e.appendChild(s),a.dataset.theme==="auto"&&window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",n=>{s.setAttribute("data-theme",n.matches?"dark":"light")}),s}function u(e){e.innerHTML=`
+  `}function z(e,a){let r=e.dataset.styleVariant||"modern",i=e.attachShadow({mode:"open"}),t=document.createElement("style");return t.textContent=H(a.accent,r),i.appendChild(t),i}function ne(e){let a=e.dataset.theme||"light";return a==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":a}function D(e,a,r){let i=ne(a),t=a.dataset.size||"default",o=document.createElement("div");return o.className=["guidefyi-widget",r].filter(Boolean).join(" "),o.setAttribute("data-theme",i),o.setAttribute("data-size",t),e.appendChild(o),a.dataset.theme==="auto"&&window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",n=>{o.setAttribute("data-theme",n.matches?"dark":"light")}),o}function u(e){e.innerHTML=`
     <div class="guidefyi-loading">
       <span class="guidefyi-spinner"></span>
       Loading\u2026
     </div>
-  `}function o(e,a,r){e.innerHTML=`
+  `}function s(e,a,r){e.innerHTML=`
     <div class="guidefyi-error">
       <p>${a}</p>
-      <a href="https://${r.domain}" target="_blank" rel="noopener">
+      <a href="https://${r.domain}" target="_blank" rel="nofollow noopener">
         Visit ${r.name}
       </a>
     </div>
-  `}var A='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';function l(e){return`<span class="guidefyi-powered">Powered by <a href="https://${e.domain}" target="_blank" rel="noopener">${e.name}</a></span>`}function $(e){return`guidefyi_embed_${e}`}function se(e){try{let a=sessionStorage.getItem($(e));if(!a)return null;let r=JSON.parse(a);return Date.now()-r.ts>3e5?(sessionStorage.removeItem($(e)),null):r.data}catch{return null}}function oe(e,a){try{let r={data:a,ts:Date.now()};sessionStorage.setItem($(e),JSON.stringify(r))}catch{}}async function g(e,a,r){let i=e.endsWith("/")?e:e+"/",t=a.startsWith("/")?a.slice(1):a,s=new URL(t,i);r&&Object.entries(r).forEach(([m,h])=>s.searchParams.set(m,h));let n=s.toString(),d=se(n);if(d!==null)return d;let c=await fetch(n,{headers:{Accept:"application/json"}});if(!c.ok)throw new Error(`API error ${c.status}: ${n}`);let y=await c.json();return oe(n,y),y}async function b(e,a,r){let i=await g(e,a,r);return Array.isArray(i)?i:i&&typeof i=="object"&&"results"in i?i.results:[]}var k={calculatorDetail:e=>`calculators/${e}/`,calculatorList:"calculators/",formulaDetail:e=>`formulas/${e}/`,formulaList:"formulas/",categoryList:"categories/",categoryDetail:e=>`categories/${e}/`,glossaryDetail:e=>`glossary/${e}/`,glossaryList:"glossary/",guideDetail:e=>`guides/${e}/`,guideList:"guides/",faqList:"faqs/",stats:"stats/"},_={calculator:e=>`https://calcfyi.com/calculator/${e}/`,formula:e=>`https://calcfyi.com/formula/${e}/`,category:e=>`https://calcfyi.com/category/${e}/`,glossary:e=>`https://calcfyi.com/glossary/${e}/`,guide:e=>`https://calcfyi.com/guide/${e}/`,home:"https://calcfyi.com/"};var P='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';var B='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',q='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="8" y1="18" x2="8" y2="18.01"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>',F='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>';function I(e){return e==null?"\u2014":e.toLocaleString("en-US")}function x(e){return e==null?"\u2014":"$"+e.toLocaleString("en-US",{maximumFractionDigits:0})}function v(e,a){return e?e.length>a?e.slice(0,a)+"\u2026":e:""}function p(e,a){return`<a class="guidefyi-link" href="${e}" target="_blank" rel="noopener">${a} ${A}</a>`}async function j(e,a,r){let i=await g(r.apiBase,k.calculatorDetail(a)),t=_.calculator(i.slug);e.innerHTML=`
+  `}var A='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';function l(e){return`<span class="guidefyi-powered">Powered by <a href="https://${e.domain}" target="_blank" rel="nofollow noopener">${e.name}</a></span>`}function $(e){return`guidefyi_embed_${e}`}function oe(e){try{let a=sessionStorage.getItem($(e));if(!a)return null;let r=JSON.parse(a);return Date.now()-r.ts>3e5?(sessionStorage.removeItem($(e)),null):r.data}catch{return null}}function se(e,a){try{let r={data:a,ts:Date.now()};sessionStorage.setItem($(e),JSON.stringify(r))}catch{}}async function g(e,a,r){let i=e.endsWith("/")?e:e+"/",t=a.startsWith("/")?a.slice(1):a,o=new URL(t,i);r&&Object.entries(r).forEach(([m,h])=>o.searchParams.set(m,h));let n=o.toString(),d=oe(n);if(d!==null)return d;let c=await fetch(n,{headers:{Accept:"application/json"}});if(!c.ok)throw new Error(`API error ${c.status}: ${n}`);let y=await c.json();return se(n,y),y}async function b(e,a,r){let i=await g(e,a,r);return Array.isArray(i)?i:i&&typeof i=="object"&&"results"in i?i.results:[]}var k={calculatorDetail:e=>`calculators/${e}/`,calculatorList:"calculators/",formulaDetail:e=>`formulas/${e}/`,formulaList:"formulas/",categoryList:"categories/",categoryDetail:e=>`categories/${e}/`,glossaryDetail:e=>`glossary/${e}/`,glossaryList:"glossary/",guideDetail:e=>`guides/${e}/`,guideList:"guides/",faqList:"faqs/",stats:"stats/"},_={calculator:e=>`https://calcfyi.com/calculator/${e}/`,formula:e=>`https://calcfyi.com/formula/${e}/`,category:e=>`https://calcfyi.com/category/${e}/`,glossary:e=>`https://calcfyi.com/glossary/${e}/`,guide:e=>`https://calcfyi.com/guide/${e}/`,home:"https://calcfyi.com/"};var P='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';var B='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',q='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="8" y1="18" x2="8" y2="18.01"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>',F='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>';function I(e){return e==null?"\u2014":e.toLocaleString("en-US")}function x(e){return e==null?"\u2014":"$"+e.toLocaleString("en-US",{maximumFractionDigits:0})}function v(e,a){return e?e.length>a?e.slice(0,a)+"\u2026":e:""}function p(e,a){return`<a class="guidefyi-link" href="${e}" target="_blank" rel="nofollow noopener">${a} ${A}</a>`}async function j(e,a,r){let i=await g(r.apiBase,k.calculatorDetail(a)),t=_.calculator(i.slug);e.innerHTML=`
     <div class="guidefyi-card-header">
       <h3 class="guidefyi-card-title">
-        <a href="${t}" target="_blank" rel="noopener">${q} ${i.name}</a>
+        <a href="${t}" target="_blank" rel="nofollow noopener">${q} ${i.name}</a>
       </h3>
       <p class="guidefyi-card-subtitle">${i.category}</p>
     </div>
@@ -459,7 +459,7 @@ ${te(a)}
       </div>
     </div>
     ${l(r)}
-  `}async function R(e,a,r){let i=await g(r.apiBase,k.formulaDetail(a)),t=_.formula(i.slug),s=i.variables&&i.variables.length>0?`<div class="guidefyi-vars">
+  `}async function R(e,a,r){let i=await g(r.apiBase,k.formulaDetail(a)),t=_.formula(i.slug),o=i.variables&&i.variables.length>0?`<div class="guidefyi-vars">
         ${i.variables.map(n=>`
           <div class="guidefyi-var-row">
             <span class="guidefyi-var-symbol">${n.symbol||"\u2014"}</span>
@@ -470,11 +470,11 @@ ${te(a)}
        </div>`:"";e.innerHTML=`
     <div class="guidefyi-card-header">
       <h3 class="guidefyi-card-title">
-        <a href="${t}" target="_blank" rel="noopener">${i.title}</a>
+        <a href="${t}" target="_blank" rel="nofollow noopener">${i.title}</a>
       </h3>
     </div>
     ${i.formula_latex?`<div class="guidefyi-formula-box">${de(i.formula_latex)}</div>`:""}
-    ${s}
+    ${o}
     <div class="guidefyi-card-body">
       ${i.explanation?`<p class="guidefyi-card-desc">${v(i.explanation,180)}</p>`:""}
       <div class="guidefyi-card-footer">
@@ -482,10 +482,10 @@ ${te(a)}
       </div>
     </div>
     ${l(r)}
-  `}function de(e){return e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}var C={countryDetail:e=>`countries/${e}/`,countryList:"countries/",cityList:"cities/",roleDetail:e=>`roles/${e}/`,roleList:"roles/",salaryData:"salary-data/",glossaryDetail:e=>`glossary/${e}/`,glossaryList:"glossary/",guideDetail:e=>`guides/${e}/`,guideList:"guides/",faqList:"faqs/",search:"search/",stats:"stats/"},L={country:e=>`https://salaryfyi.com/countries/${e}/`,role:e=>`https://salaryfyi.com/roles/${e}/`,salary:(e,a)=>`https://salaryfyi.com/salary/${e}/${a}/`,glossary:e=>`https://salaryfyi.com/glossary/${e}/`,guide:e=>`https://salaryfyi.com/guide/${e}/`,home:"https://salaryfyi.com/"};async function G(e,a,r){let i=await g(r.apiBase,C.countryDetail(a)),t=L.country(i.slug),s=n=>{if(!n)return"";let c={growing:"#16a34a",stable:"#eab308",declining:"#dc2626"}[n.toLowerCase()]||"var(--muted)";return`<span class="guidefyi-badge" style="background:${c}20;color:${c}">${n}</span>`};e.innerHTML=`
+  `}function de(e){return e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}var C={countryDetail:e=>`countries/${e}/`,countryList:"countries/",cityList:"cities/",roleDetail:e=>`roles/${e}/`,roleList:"roles/",salaryData:"salary-data/",glossaryDetail:e=>`glossary/${e}/`,glossaryList:"glossary/",guideDetail:e=>`guides/${e}/`,guideList:"guides/",faqList:"faqs/",search:"search/",stats:"stats/"},L={country:e=>`https://salaryfyi.com/countries/${e}/`,role:e=>`https://salaryfyi.com/roles/${e}/`,salary:(e,a)=>`https://salaryfyi.com/salary/${e}/${a}/`,glossary:e=>`https://salaryfyi.com/glossary/${e}/`,guide:e=>`https://salaryfyi.com/guide/${e}/`,home:"https://salaryfyi.com/"};async function G(e,a,r){let i=await g(r.apiBase,C.countryDetail(a)),t=L.country(i.slug),o=n=>{if(!n)return"";let c={growing:"#16a34a",stable:"#eab308",declining:"#dc2626"}[n.toLowerCase()]||"var(--muted)";return`<span class="guidefyi-badge" style="background:${c}20;color:${c}">${n}</span>`};e.innerHTML=`
     <div class="guidefyi-card-header">
       <h3 class="guidefyi-card-title">
-        <a href="${t}" target="_blank" rel="noopener">${i.flag_emoji||""} ${i.name}</a>
+        <a href="${t}" target="_blank" rel="nofollow noopener">${i.flag_emoji||""} ${i.name}</a>
       </h3>
       <p class="guidefyi-card-subtitle">${i.continent} \xB7 ${i.currency_code}</p>
     </div>
@@ -513,7 +513,7 @@ ${te(a)}
   `}async function N(e,a,r){let i=await g(r.apiBase,C.roleDetail(a)),t=L.role(i.slug),n={high:"#16a34a",growing:"#16a34a",moderate:"#eab308",stable:"#eab308",low:"#dc2626",declining:"#dc2626"}[i.demand_trend?.toLowerCase()]||"var(--muted)";e.innerHTML=`
     <div class="guidefyi-card-header">
       <h3 class="guidefyi-card-title">
-        <a href="${t}" target="_blank" rel="noopener">${B} ${i.name}</a>
+        <a href="${t}" target="_blank" rel="nofollow noopener">${B} ${i.name}</a>
       </h3>
       <p class="guidefyi-card-subtitle">${i.category}</p>
     </div>
@@ -534,10 +534,10 @@ ${te(a)}
       </div>
     </div>
     ${l(r)}
-  `}var Q={gameDetail:e=>`games/${e}/`,gameList:"games/",publisherList:"publishers/",designerList:"designers/",mechanicList:"mechanics/",categoryList:"categories/",awardList:"awards/",glossaryDetail:e=>`glossary/${e}/`,glossaryList:"glossary/",guideDetail:e=>`guides/${e}/`,guideList:"guides/",faqList:"faqs/",stats:"stats/"},W={game:e=>`https://boardgamefyi.com/games/${e}/`,designer:e=>`https://boardgamefyi.com/designers/${e}/`,mechanic:e=>`https://boardgamefyi.com/mechanics/${e}/`,publisher:e=>`https://boardgamefyi.com/publishers/${e}/`,glossary:e=>`https://boardgamefyi.com/glossary/${e}/`,guide:e=>`https://boardgamefyi.com/guide/${e}/`,home:"https://boardgamefyi.com/"};async function U(e,a,r){let i=await g(r.apiBase,Q.gameDetail(a)),t=W.game(i.slug),s=i.min_players&&i.max_players?i.min_players===i.max_players?`${i.min_players}`:`${i.min_players}\u2013${i.max_players}`:"\u2014",n=i.playing_time_min&&i.playing_time_max?i.playing_time_min===i.playing_time_max?`${i.playing_time_min}m`:`${i.playing_time_min}\u2013${i.playing_time_max}m`:"\u2014",d=i.bgg_rating!=null?i.bgg_rating.toFixed(1):"\u2014",c=i.bgg_weight!=null?i.bgg_weight.toFixed(1)+"/5":"\u2014";e.innerHTML=`
+  `}var Q={gameDetail:e=>`games/${e}/`,gameList:"games/",publisherList:"publishers/",designerList:"designers/",mechanicList:"mechanics/",categoryList:"categories/",awardList:"awards/",glossaryDetail:e=>`glossary/${e}/`,glossaryList:"glossary/",guideDetail:e=>`guides/${e}/`,guideList:"guides/",faqList:"faqs/",stats:"stats/"},W={game:e=>`https://boardgamefyi.com/games/${e}/`,designer:e=>`https://boardgamefyi.com/designers/${e}/`,mechanic:e=>`https://boardgamefyi.com/mechanics/${e}/`,publisher:e=>`https://boardgamefyi.com/publishers/${e}/`,glossary:e=>`https://boardgamefyi.com/glossary/${e}/`,guide:e=>`https://boardgamefyi.com/guide/${e}/`,home:"https://boardgamefyi.com/"};async function U(e,a,r){let i=await g(r.apiBase,Q.gameDetail(a)),t=W.game(i.slug),o=i.min_players&&i.max_players?i.min_players===i.max_players?`${i.min_players}`:`${i.min_players}\u2013${i.max_players}`:"\u2014",n=i.playing_time_min&&i.playing_time_max?i.playing_time_min===i.playing_time_max?`${i.playing_time_min}m`:`${i.playing_time_min}\u2013${i.playing_time_max}m`:"\u2014",d=i.bgg_rating!=null?i.bgg_rating.toFixed(1):"\u2014",c=i.bgg_weight!=null?i.bgg_weight.toFixed(1)+"/5":"\u2014";e.innerHTML=`
     <div class="guidefyi-card-header">
       <h3 class="guidefyi-card-title">
-        <a href="${t}" target="_blank" rel="noopener">${F} ${i.name}</a>
+        <a href="${t}" target="_blank" rel="nofollow noopener">${F} ${i.name}</a>
       </h3>
       <p class="guidefyi-card-subtitle">${i.year_published||""} ${i.bgg_rank?"\xB7 BGG #"+I(i.bgg_rank):""}</p>
     </div>
@@ -549,7 +549,7 @@ ${te(a)}
         </div>
         <div class="guidefyi-prop">
           <span class="guidefyi-prop-label">Players</span>
-          <span class="guidefyi-prop-value">${s}</span>
+          <span class="guidefyi-prop-value">${o}</span>
         </div>
         <div class="guidefyi-prop">
           <span class="guidefyi-prop-label">Time</span>
@@ -566,18 +566,18 @@ ${te(a)}
       </div>
     </div>
     ${l(r)}
-  `}async function O(e,a,r){let i=a.dataset.slug;if(!i){o(e,"Missing data-slug attribute",r);return}u(e);try{let t=a.dataset.entityType||"";switch(r.site){case"calcfyi":t==="formula"?await R(e,i,r):await j(e,i,r);break;case"salaryfyi":t==="role"?await N(e,i,r):await G(e,i,r);break;case"boardgamefyi":await U(e,i,r);break;default:o(e,`Unknown site: ${r.site}`,r)}}catch(t){o(e,t.message,r)}}var w=new Set;function V(e,a,r,i){let t=`defined-term:${r}`;if(w.has(t))return;w.add(t);let s={"@context":"https://schema.org","@type":"DefinedTerm",name:e,description:a.slice(0,300),url:r,inDefinedTermSet:{"@type":"DefinedTermSet",name:`${i} Glossary`,url:r.replace(/glossary\/.*/,"glossary/")}};J(s)}function Y(e,a){let r=`faq:${a}`;if(w.has(r))return;w.add(r);let i={"@context":"https://schema.org","@type":"FAQPage",mainEntity:e.slice(0,10).map(t=>({"@type":"Question",name:t.question,acceptedAnswer:{"@type":"Answer",text:t.answer.slice(0,500)}}))};J(i)}function J(e){let a=document.createElement("script");a.type="application/ld+json",a.textContent=JSON.stringify(e),document.head.appendChild(a)}function le(e,a){return`glossary/${a}/`}function ce(e,a,r){return`https://${a}/glossary/${r}/`}async function K(e,a,r){let i=a.dataset.slug;if(!i){o(e,"Missing data-slug",r);return}u(e);try{let t=await g(r.apiBase,le(r.site,i)),s=t.term||t.name||i,n=ce(r.site,r.domain,t.slug);a.dataset.noSnippet!=="true"&&V(s,t.definition,n,r.name),e.innerHTML=`
+  `}async function O(e,a,r){let i=a.dataset.slug;if(!i){s(e,"Missing data-slug attribute",r);return}u(e);try{let t=a.dataset.entityType||"";switch(r.site){case"calcfyi":t==="formula"?await R(e,i,r):await j(e,i,r);break;case"salaryfyi":t==="role"?await N(e,i,r):await G(e,i,r);break;case"boardgamefyi":await U(e,i,r);break;default:s(e,`Unknown site: ${r.site}`,r)}}catch(t){s(e,t.message,r)}}var w=new Set;function V(e,a,r,i){let t=`defined-term:${r}`;if(w.has(t))return;w.add(t);let o={"@context":"https://schema.org","@type":"DefinedTerm",name:e,description:a.slice(0,300),url:r,inDefinedTermSet:{"@type":"DefinedTermSet",name:`${i} Glossary`,url:r.replace(/glossary\/.*/,"glossary/")}};J(o)}function Y(e,a){let r=`faq:${a}`;if(w.has(r))return;w.add(r);let i={"@context":"https://schema.org","@type":"FAQPage",mainEntity:e.slice(0,10).map(t=>({"@type":"Question",name:t.question,acceptedAnswer:{"@type":"Answer",text:t.answer.slice(0,500)}}))};J(i)}function J(e){let a=document.createElement("script");a.type="application/ld+json",a.textContent=JSON.stringify(e),document.head.appendChild(a)}function le(e,a){return`glossary/${a}/`}function ce(e,a,r){return`https://${a}/glossary/${r}/`}async function K(e,a,r){let i=a.dataset.slug;if(!i){s(e,"Missing data-slug",r);return}u(e);try{let t=await g(r.apiBase,le(r.site,i)),o=t.term||t.name||i,n=ce(r.site,r.domain,t.slug);a.dataset.noSnippet!=="true"&&V(o,t.definition,n,r.name),e.innerHTML=`
       <div class="guidefyi-card-body">
-        <div class="guidefyi-glossary-term">${s}</div>
+        <div class="guidefyi-glossary-term">${o}</div>
         ${t.category?`<div class="guidefyi-glossary-cat"><span class="guidefyi-badge">${t.category}</span></div>`:""}
         <p class="guidefyi-glossary-def">${t.definition}</p>
         <div style="margin-top:10px">${p(n,"Read more")}</div>
       </div>
       ${l(r)}
-    `}catch(t){o(e,t.message,r)}}function ge(e,a){return`https://${e}/guide/${a}/`}async function X(e,a,r){let i=a.dataset.slug;if(!i){o(e,"Missing data-slug",r);return}u(e);try{let t=await g(r.apiBase,`guides/${i}/`),s=ge(r.domain,t.slug);e.innerHTML=`
+    `}catch(t){s(e,t.message,r)}}function ge(e,a){return`https://${e}/guide/${a}/`}async function X(e,a,r){let i=a.dataset.slug;if(!i){s(e,"Missing data-slug",r);return}u(e);try{let t=await g(r.apiBase,`guides/${i}/`),o=ge(r.domain,t.slug);e.innerHTML=`
       <div class="guidefyi-card-header">
         <h3 class="guidefyi-card-title">
-          <a href="${s}" target="_blank" rel="noopener">${t.title}</a>
+          <a href="${o}" target="_blank" rel="nofollow noopener">${t.title}</a>
         </h3>
         ${t.guide_type||t.category?`<p class="guidefyi-card-subtitle">${t.guide_type||t.category||""}</p>`:""}
       </div>
@@ -587,10 +587,10 @@ ${te(a)}
           ${t.reading_time_minutes?`<span>${t.reading_time_minutes} min read</span>`:""}
           ${t.series?`<span>\xB7 ${t.series}</span>`:""}
         </div>
-        <div style="margin-top:10px">${p(s,"Read Guide")}</div>
+        <div style="margin-top:10px">${p(o,"Read Guide")}</div>
       </div>
       ${l(r)}
-    `}catch(t){o(e,t.message,r)}}var pe='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';async function Z(e,a,r){u(e);try{let i=a.dataset.slug,t={};i&&(t.category=i);let s=await b(r.apiBase,"faqs/",t);if(!s.length){o(e,"No FAQs found",r);return}let n=s.slice(0,10);a.dataset.noSnippet!=="true"&&Y(n,`https://${r.domain}/`),e.innerHTML=`
+    `}catch(t){s(e,t.message,r)}}var pe='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';async function Z(e,a,r){u(e);try{let i=a.dataset.slug,t={};i&&(t.category=i);let o=await b(r.apiBase,"faqs/",t);if(!o.length){s(e,"No FAQs found",r);return}let n=o.slice(0,10);a.dataset.noSnippet!=="true"&&Y(n,`https://${r.domain}/`),e.innerHTML=`
       <div class="guidefyi-card-header">
         <h3 class="guidefyi-card-title">Frequently Asked Questions</h3>
         <p class="guidefyi-card-subtitle">${r.name}</p>
@@ -607,7 +607,7 @@ ${te(a)}
         `).join("")}
       </div>
       ${l(r)}
-    `,e.querySelectorAll(".guidefyi-faq-q").forEach(d=>{d.addEventListener("click",()=>{let c=d.dataset.idx,y=e.querySelector(`.guidefyi-faq-a[data-idx="${c}"]`),m=d.querySelector(".guidefyi-faq-arrow"),h=y.classList.contains("open");y.classList.toggle("open"),m.classList.toggle("open")})})}catch(i){o(e,i.message,r)}}function ee(e,a,r){let i=a.dataset.placeholder||`Search ${r.entityName}...`,t=`https://${r.domain}${r.searchPath}`;e.innerHTML=`
+    `,e.querySelectorAll(".guidefyi-faq-q").forEach(d=>{d.addEventListener("click",()=>{let c=d.dataset.idx,y=e.querySelector(`.guidefyi-faq-a[data-idx="${c}"]`),m=d.querySelector(".guidefyi-faq-arrow"),h=y.classList.contains("open");y.classList.toggle("open"),m.classList.toggle("open")})})}catch(i){s(e,i.message,r)}}function ee(e,a,r){let i=a.dataset.placeholder||`Search ${r.entityName}...`,t=`https://${r.domain}${r.searchPath}`;e.innerHTML=`
     <div class="guidefyi-search-wrap">
       <form class="guidefyi-search-form" action="${t}" target="_blank" method="GET">
         <input class="guidefyi-search-input" type="text" name="q" placeholder="${i}" autocomplete="off" />
@@ -615,7 +615,7 @@ ${te(a)}
       </form>
     </div>
     ${l(r)}
-  `}function ie(e,a,r){switch(e){case"calcfyi":return`formulas/${a}/`;case"salaryfyi":return r==="role"?`roles/${a}/`:`countries/${a}/`;case"boardgamefyi":return`games/${a}/`;default:return`${a}/`}}function ue(e,a,r){switch(e){case"salaryfyi":return[["Median Salary",x(a.median_salary_usd),x(r.median_salary_usd)],["Top Tax Rate",(a.top_income_tax_rate??"\u2014")+"%",(r.top_income_tax_rate??"\u2014")+"%"],["Cost of Living",String(a.cost_of_living_index??"\u2014"),String(r.cost_of_living_index??"\u2014")]];case"boardgamefyi":return[["BGG Rating",String(a.bgg_rating?.toFixed(1)??"\u2014"),String(r.bgg_rating?.toFixed(1)??"\uFFFD\uFFFD\uFFFD")],["Weight",String(a.bgg_weight?.toFixed(1)??"\u2014"),String(r.bgg_weight?.toFixed(1)??"\u2014")],["Players",`${a.min_players}\u2013${a.max_players}`,`${r.min_players}\u2013${r.max_players}`],["Time",`${a.playing_time_min}\u2013${a.playing_time_max}m`,`${r.playing_time_min}\u2013${r.playing_time_max}m`]];default:return[]}}async function re(e,a,r){let i=a.dataset.slugs;if(!i){o(e,"Missing data-slugs (comma-separated)",r);return}let[t,s]=i.split(",").map(n=>n.trim());if(!t||!s){o(e,"Need two slugs separated by comma",r);return}u(e);try{let n=a.dataset.entityType||"",[d,c]=await Promise.all([g(r.apiBase,ie(r.site,t,n)),g(r.apiBase,ie(r.site,s,n))]),y=ue(r.site,d,c);e.innerHTML=`
+  `}function ie(e,a,r){switch(e){case"calcfyi":return`formulas/${a}/`;case"salaryfyi":return r==="role"?`roles/${a}/`:`countries/${a}/`;case"boardgamefyi":return`games/${a}/`;default:return`${a}/`}}function ue(e,a,r){switch(e){case"salaryfyi":return[["Median Salary",x(a.median_salary_usd),x(r.median_salary_usd)],["Top Tax Rate",(a.top_income_tax_rate??"\u2014")+"%",(r.top_income_tax_rate??"\u2014")+"%"],["Cost of Living",String(a.cost_of_living_index??"\u2014"),String(r.cost_of_living_index??"\u2014")]];case"boardgamefyi":return[["BGG Rating",String(a.bgg_rating?.toFixed(1)??"\u2014"),String(r.bgg_rating?.toFixed(1)??"\uFFFD\uFFFD\uFFFD")],["Weight",String(a.bgg_weight?.toFixed(1)??"\u2014"),String(r.bgg_weight?.toFixed(1)??"\u2014")],["Players",`${a.min_players}\u2013${a.max_players}`,`${r.min_players}\u2013${r.max_players}`],["Time",`${a.playing_time_min}\u2013${a.playing_time_max}m`,`${r.playing_time_min}\u2013${r.playing_time_max}m`]];default:return[]}}async function re(e,a,r){let i=a.dataset.slugs;if(!i){s(e,"Missing data-slugs (comma-separated)",r);return}let[t,o]=i.split(",").map(n=>n.trim());if(!t||!o){s(e,"Need two slugs separated by comma",r);return}u(e);try{let n=a.dataset.entityType||"",[d,c]=await Promise.all([g(r.apiBase,ie(r.site,t,n)),g(r.apiBase,ie(r.site,o,n))]),y=ue(r.site,d,c);e.innerHTML=`
       <div class="guidefyi-card-header">
         <h3 class="guidefyi-card-title">${d.name} vs ${c.name}</h3>
         <p class="guidefyi-card-subtitle">${r.name} Comparison</p>
@@ -641,7 +641,7 @@ ${te(a)}
         </div>
       </div>
       ${l(r)}
-    `}catch(n){o(e,n.message,r)}}async function ae(e,a,r){let i=a.dataset.country,t=a.dataset.role;if(!i||!t){o(e,"Missing data-country and/or data-role",r);return}u(e);try{let s=await b(r.apiBase,"salary-data/",{country__slug:i,role__slug:t});if(!s.length){o(e,`No salary data for ${i} / ${t}`,r);return}let n=s.reduce((y,m)=>y.year>m.year?y:m),d=Math.max(n.p75_usd||0,n.median_usd||0,1),c=`https://${r.domain}/salary/${i}/${t}/`;e.innerHTML=`
+    `}catch(n){s(e,n.message,r)}}async function ae(e,a,r){let i=a.dataset.country,t=a.dataset.role;if(!i||!t){s(e,"Missing data-country and/or data-role",r);return}u(e);try{let o=await b(r.apiBase,"salary-data/",{country__slug:i,role__slug:t});if(!o.length){s(e,`No salary data for ${i} / ${t}`,r);return}let n=o.reduce((y,m)=>y.year>m.year?y:m),d=Math.max(n.p75_usd||0,n.median_usd||0,1),c=`https://${r.domain}/salary/${i}/${t}/`;e.innerHTML=`
       <div class="guidefyi-card-header">
         <h3 class="guidefyi-card-title">Salary Range</h3>
         <p class="guidefyi-card-subtitle">${t} in ${i} (${n.year})</p>
@@ -684,4 +684,4 @@ ${te(a)}
         ${p(c,"Full Salary Data")}
       </div>
       ${l(r)}
-    `}catch(s){o(e,s.message,r)}}var f={site:"salaryfyi",name:"SalaryFYI",domain:"salaryfyi.com",accent:"#16A34A",attribute:"data-salaryfyi",apiBase:"https://salaryfyi.com/api/v1/",searchPath:"/search/",entityName:"Countries",entitySlug:"united-states"};async function fe(e){let a=e.dataset[f.attribute.replace("data-","")]||"entity",r=e.dataset.slug||"",i=z(e,f),t=D(i,e);try{switch(a){case"entity":await O(t,e,f);break;case"glossary":await K(t,e,f);break;case"guide":await X(t,e,f);break;case"faq":await Z(t,e,f);break;case"search":ee(t,e,f);break;case"compare":await re(t,e,f);break;case"salary-compare":await ae(t,e,f);break;default:o(t,`Unknown widget type: ${a}`,f)}}catch(s){o(t,s.message,f)}}var S=new IntersectionObserver(e=>{e.forEach(a=>{a.isIntersecting&&(S.unobserve(a.target),fe(a.target))})},{rootMargin:"200px"});function T(){document.querySelectorAll("[data-salaryfyi]").forEach(e=>{e.shadowRoot||S.observe(e)}),document.querySelectorAll("salaryfyi-entity, salaryfyi-glossary, salaryfyi-search, salaryfyi-faq, salaryfyi-guide, salaryfyi-compare").forEach(e=>{if(!e.shadowRoot){let a=e.dataset;a[f.attribute.replace("data-","")]=e.tagName.split("-").pop().toLowerCase(),e.getAttribute("slug")&&(a.slug=e.getAttribute("slug")),e.getAttribute("theme")&&(a.theme=e.getAttribute("theme")),e.getAttribute("style-variant")&&(a.styleVariant=e.getAttribute("style-variant")),e.getAttribute("size")&&(a.size=e.getAttribute("size")),S.observe(e)}})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",T):T();new MutationObserver(()=>T()).observe(document.body,{childList:!0,subtree:!0});
+    `}catch(o){s(e,o.message,r)}}var f={site:"salaryfyi",name:"SalaryFYI",domain:"salaryfyi.com",accent:"#16A34A",attribute:"data-salaryfyi",apiBase:"https://salaryfyi.com/api/v1/",searchPath:"/search/",entityName:"Countries",entitySlug:"united-states"};async function fe(e){let a=e.dataset[f.attribute.replace("data-","")]||"entity",r=e.dataset.slug||"",i=z(e,f),t=D(i,e);try{switch(a){case"entity":await O(t,e,f);break;case"glossary":await K(t,e,f);break;case"guide":await X(t,e,f);break;case"faq":await Z(t,e,f);break;case"search":ee(t,e,f);break;case"compare":await re(t,e,f);break;case"salary-compare":await ae(t,e,f);break;default:s(t,`Unknown widget type: ${a}`,f)}}catch(o){s(t,o.message,f)}}var S=new IntersectionObserver(e=>{e.forEach(a=>{a.isIntersecting&&(S.unobserve(a.target),fe(a.target))})},{rootMargin:"200px"});function T(){document.querySelectorAll("[data-salaryfyi]").forEach(e=>{e.shadowRoot||S.observe(e)}),document.querySelectorAll("salaryfyi-entity, salaryfyi-glossary, salaryfyi-search, salaryfyi-faq, salaryfyi-guide, salaryfyi-compare").forEach(e=>{if(!e.shadowRoot){let a=e.dataset;a[f.attribute.replace("data-","")]=e.tagName.split("-").pop().toLowerCase(),e.getAttribute("slug")&&(a.slug=e.getAttribute("slug")),e.getAttribute("theme")&&(a.theme=e.getAttribute("theme")),e.getAttribute("style-variant")&&(a.styleVariant=e.getAttribute("style-variant")),e.getAttribute("size")&&(a.size=e.getAttribute("size")),S.observe(e)}})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",T):T();new MutationObserver(()=>T()).observe(document.body,{childList:!0,subtree:!0});
